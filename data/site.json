@@ -53,18 +53,30 @@
     {
       "id": "m03",
       "visible": true,
-      "nombre": "Integrante 03",
+      "nombre": "Darlene Mariah Lopez Vazquez",
       "especialidad": "Cloud & DevOps",
-      "email": "integrante03@ejemplo.com",
-      "telefono": "000-000-0000",
+      "email": "lopezvazquezdarlene@gmail.com",
+      "telefono": "+52 438 111 3112",
       "extras": [
         {
           "etiqueta": "Ubicación",
-          "valor": "Ciudad, País"
+          "valor": "Puruándiro Michoacán, México"
+        },
+        {
+          "etiqueta": "Linkedin",
+          "valor": ""
+        },
+        {
+          "etiqueta": "",
+          "valor": "www.linkedin.com/in/darlenelopezvazquez"
+        },
+        {
+          "etiqueta": "",
+          "valor": ""
         }
       ],
-      "portafolio": "",
-      "foto": "",
+      "portafolio": "https://darleneelmv.github.io/portafolioDarleneMLV/",
+      "foto": "assets/uploads/darlene-mariah-lopez-vazquez-mwnrjlnl.jpg",
       "fotoPos": 30
     },
     {
