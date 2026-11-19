@@ -3,7 +3,7 @@
     "nombre": "TI CONSULTING S.A.S.",
     "lema": "EJEMPLO",
     "descripcion": "Consultoría en tecnologías de la información. Un equipo multidisciplinario que diseña, construye y acompaña la transformación digital de tu organización.",
-    "logo": "assets/logo.svg",
+    "logo": "assets/uploads/logo-mwnw13oi.png",
     "tituloEquipo": "Nuestro equipo",
     "subtituloEquipo": "Conoce a los especialistas detrás de cada proyecto. Toca una tarjeta para ver su portafolio profesional.",
     "email": "contacto@ejemplo.com",
@@ -12,8 +12,8 @@
     "linkedin": "",
     "instagram": "",
     "facebook": "",
-    "colorPrimario": "#0b5cad",
-    "colorAcento": "#1fb6e8"
+    "colorPrimario": "#ff2600",
+    "colorAcento": "#feffff"
   },
   "miembros": [
     {
