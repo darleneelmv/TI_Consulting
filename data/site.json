@@ -1,0 +1,275 @@
+{
+  "empresa": {
+    "nombre": "TI CONSULTING S.A.S.",
+    "lema": "EJEMPLO",
+    "descripcion": "Consultoría en tecnologías de la información. Un equipo multidisciplinario que diseña, construye y acompaña la transformación digital de tu organización.",
+    "logo": "assets/logo.svg",
+    "tituloEquipo": "Nuestro equipo",
+    "subtituloEquipo": "Conoce a los especialistas detrás de cada proyecto. Toca una tarjeta para ver su portafolio profesional.",
+    "email": "contacto@ejemplo.com",
+    "telefono": "",
+    "direccion": "",
+    "linkedin": "",
+    "instagram": "",
+    "facebook": "",
+    "colorPrimario": "#0b5cad",
+    "colorAcento": "#1fb6e8"
+  },
+  "miembros": [
+    {
+      "id": "m01",
+      "visible": true,
+      "nombre": "Integrante 01",
+      "especialidad": "Ciberseguridad",
+      "email": "integrante01@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m02",
+      "visible": true,
+      "nombre": "Integrante 02",
+      "especialidad": "Desarrollo Web",
+      "email": "integrante02@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m03",
+      "visible": true,
+      "nombre": "Integrante 03",
+      "especialidad": "Cloud & DevOps",
+      "email": "integrante03@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m04",
+      "visible": true,
+      "nombre": "Integrante 04",
+      "especialidad": "Ciencia de Datos",
+      "email": "integrante04@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m05",
+      "visible": true,
+      "nombre": "Integrante 05",
+      "especialidad": "Diseño UX/UI",
+      "email": "integrante05@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m06",
+      "visible": true,
+      "nombre": "Integrante 06",
+      "especialidad": "Redes e Infraestructura",
+      "email": "integrante06@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m07",
+      "visible": true,
+      "nombre": "Integrante 07",
+      "especialidad": "Sistemas ERP",
+      "email": "integrante07@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m08",
+      "visible": true,
+      "nombre": "Integrante 08",
+      "especialidad": "Inteligencia Artificial",
+      "email": "integrante08@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m09",
+      "visible": true,
+      "nombre": "Integrante 09",
+      "especialidad": "Gestión de Proyectos TI",
+      "email": "integrante09@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m10",
+      "visible": true,
+      "nombre": "Integrante 10",
+      "especialidad": "QA & Testing",
+      "email": "integrante10@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m11",
+      "visible": true,
+      "nombre": "Integrante 11",
+      "especialidad": "Bases de Datos",
+      "email": "integrante11@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m12",
+      "visible": true,
+      "nombre": "Integrante 12",
+      "especialidad": "Desarrollo Móvil",
+      "email": "integrante12@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m13",
+      "visible": true,
+      "nombre": "Integrante 13",
+      "especialidad": "Transformación Digital",
+      "email": "integrante13@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m14",
+      "visible": true,
+      "nombre": "Integrante 14",
+      "especialidad": "Soporte y Mesa de Ayuda",
+      "email": "integrante14@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    },
+    {
+      "id": "m15",
+      "visible": true,
+      "nombre": "Integrante 15",
+      "especialidad": "Consultoría Estratégica",
+      "email": "integrante15@ejemplo.com",
+      "telefono": "000-000-0000",
+      "extras": [
+        {
+          "etiqueta": "Ubicación",
+          "valor": "Ciudad, País"
+        }
+      ],
+      "portafolio": "",
+      "foto": "",
+      "fotoPos": 30
+    }
+  ]
+}

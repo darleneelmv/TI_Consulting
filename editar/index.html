@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel de edición</title>
+  <link rel="icon" href="../assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- ========== LOGIN / CONFIGURACIÓN ========== -->
+  <section class="auth" id="authView" hidden>
+    <div class="auth-bg" aria-hidden="true"><span></span><span></span></div>
+    <div class="auth-card">
+      <img class="auth-logo" src="../assets/logo.svg" alt="" id="authLogo">
+      <div id="loginBox" hidden>
+        <h1>Panel de edición</h1>
+        <p class="muted">Escribe la contraseña del equipo para editar el sitio.</p>
+        <form id="loginForm" autocomplete="on">
+          <input type="text" name="username" value="equipo" autocomplete="username" hidden>
+          <label class="field">
+            <span>Contraseña</span>
+            <div class="pw"><input id="loginPw" type="password" autocomplete="current-password" required><button type="button" class="eye" aria-label="Mostrar">👁</button></div>
+          </label>
+          <button class="btn primary block" type="submit">Entrar</button>
+          <p class="error" id="loginErr" hidden></p>
+        </form>
+      </div>
+
+      <div id="setupBox" hidden>
+        <h1>Configuración inicial</h1>
+        <p class="muted">Se hace <b>una sola vez</b>. Conecta el panel con GitHub para que los cambios se publiquen solos.</p>
+        <ol class="steps">
+          <li>
+            <b>Crea un token de GitHub</b> (con la cuenta dueña del repositorio).
+            <a class="btn small" id="tokenLink" target="_blank" rel="noopener">Abrir GitHub ↗</a>
+            <details>
+              <summary>¿Qué elijo en GitHub?</summary>
+              <ul>
+                <li><b>Token name:</b> Panel TI Consulting</li>
+                <li><b>Expiration:</b> la más larga posible (o "No expiration")</li>
+                <li><b>Repository access:</b> Only select repositories → <span class="repo-name"></span></li>
+                <li><b>Permissions → Repository → Contents:</b> Read and write</li>
+                <li>Pulsa <b>Generate token</b> y copia el código que empieza con <code>github_pat_</code></li>
+              </ul>
+            </details>
+          </li>
+          <li><b>Pega el token</b> aquí y elige la contraseña que compartirás con el equipo.</li>
+        </ol>
+        <form id="setupForm">
+          <label class="field"><span>Token de GitHub</span><input id="setupToken" type="password" placeholder="github_pat_…" required autocomplete="off"></label>
+          <label class="field"><span>Contraseña del equipo (mín. 10 caracteres)</span><input id="setupPw" type="password" minlength="10" required autocomplete="new-password"></label>
+          <label class="field"><span>Repite la contraseña</span><input id="setupPw2" type="password" minlength="10" required autocomplete="new-password"></label>
+          <button class="btn primary block" type="submit">Guardar y entrar</button>
+          <p class="error" id="setupErr" hidden></p>
+        </form>
+        <p class="tiny muted">El token se guarda cifrado con la contraseña (AES-256). Nadie puede usarlo sin la contraseña.</p>
+      </div>
+
+      <div id="loadingBox"><div class="spinner"></div><p class="muted">Cargando…</p></div>
+    </div>
+  </section>
+
+  <!-- ========== EDITOR ========== -->
+  <div class="app" id="appView" hidden>
+    <header class="topbar">
+      <div class="tb-left">
+        <img id="tbLogo" src="../assets/logo.svg" alt="">
+        <div><strong id="tbName">TI CONSULTING S.A.S.</strong><small>Panel de edición</small></div>
+      </div>
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="miembros">Portafolios</button>
+        <button class="tab" data-tab="empresa">Empresa y logo</button>
+        <button class="tab" data-tab="seguridad">Acceso</button>
+      </nav>
+      <div class="tb-right">
+        <a class="btn ghost" href="../" target="_blank" rel="noopener">Ver sitio ↗</a>
+        <button class="btn primary" id="publishBtn" disabled>Publicar cambios <span class="count" id="pendingCount" hidden>0</span></button>
+        <button class="btn ghost" id="logoutBtn">Salir</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- MIEMBROS -->
+      <section class="panel" data-panel="miembros">
+        <div class="panel-head">
+          <div>
+            <h2>Portafolios del equipo</h2>
+            <p class="muted">Toca una tarjeta para editar su foto, datos y enlace. Arrastra para cambiar el orden.</p>
+          </div>
+          <button class="btn primary" id="addMember">＋ Agregar integrante</button>
+        </div>
+        <div class="tiles" id="tiles"></div>
+      </section>
+
+      <!-- EMPRESA -->
+      <section class="panel" data-panel="empresa" hidden>
+        <div class="panel-head"><div><h2>Empresa y logo</h2><p class="muted">Lo que se ve en la portada, el encabezado y el pie de página.</p></div></div>
+        <div class="company">
+          <div class="box">
+            <h3>Logo</h3>
+            <div class="logo-drop" id="logoDrop">
+              <img id="logoPreview" alt="Logo">
+              <span>Haz clic o arrastra una imagen<br><small>PNG, JPG o SVG · fondo transparente recomendado</small></span>
+            </div>
+            <input type="file" id="logoFile" accept="image/*" hidden>
+            <h3 class="mt">Colores</h3>
+            <div class="colors">
+              <label class="color"><input type="color" data-e="colorPrimario"><span>Principal</span></label>
+              <label class="color"><input type="color" data-e="colorAcento"><span>Acento</span></label>
+            </div>
+          </div>
+          <div class="box grow">
+            <div class="row2">
+              <label class="field"><span>Nombre de la empresa</span><input data-e="nombre"></label>
+              <label class="field"><span>Lema</span><input data-e="lema"></label>
+            </div>
+            <label class="field"><span>Descripción (portada)</span><textarea data-e="descripcion" rows="3"></textarea></label>
+            <div class="row2">
+              <label class="field"><span>Título de la sección del equipo</span><input data-e="tituloEquipo"></label>
+              <label class="field"><span>Subtítulo de la sección</span><input data-e="subtituloEquipo"></label>
+            </div>
+            <h3 class="mt">Contacto</h3>
+            <div class="row3">
+              <label class="field"><span>E-mail</span><input data-e="email" type="email"></label>
+              <label class="field"><span>Teléfono</span><input data-e="telefono"></label>
+              <label class="field"><span>Dirección / ciudad</span><input data-e="direccion"></label>
+            </div>
+            <div class="row3">
+              <label class="field"><span>LinkedIn (enlace)</span><input data-e="linkedin" placeholder="linkedin.com/company/…"></label>
+              <label class="field"><span>Instagram (enlace)</span><input data-e="instagram" placeholder="instagram.com/…"></label>
+              <label class="field"><span>Facebook (enlace)</span><input data-e="facebook" placeholder="facebook.com/…"></label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEGURIDAD -->
+      <section class="panel" data-panel="seguridad" hidden>
+        <div class="panel-head"><div><h2>Acceso al panel</h2><p class="muted">Cambia la contraseña del equipo o renueva el token de GitHub.</p></div></div>
+        <div class="company">
+          <form class="box grow" id="accessForm">
+            <h3>Cambiar contraseña / token</h3>
+            <label class="field"><span>Nuevo token de GitHub <small class="muted">(déjalo vacío para conservar el actual)</small></span><input id="accToken" type="password" placeholder="github_pat_…" autocomplete="off"></label>
+            <label class="field"><span>Contraseña del equipo (nueva o la misma)</span><input id="accPw" type="password" minlength="10" required autocomplete="new-password"></label>
+            <label class="field"><span>Repite la contraseña</span><input id="accPw2" type="password" minlength="10" required autocomplete="new-password"></label>
+            <button class="btn primary" type="submit">Guardar acceso</button>
+            <p class="tiny muted">Al cambiar la contraseña, avisa al equipo: la anterior deja de funcionar en cuanto se guarda.</p>
+          </form>
+          <div class="box">
+            <h3>Respaldo</h3>
+            <p class="muted">Descarga una copia de todos los datos o restaura una copia anterior.</p>
+            <button class="btn ghost block" id="backupBtn" type="button">⬇ Descargar respaldo</button>
+            <button class="btn ghost block" id="restoreBtn" type="button">⬆ Restaurar respaldo</button>
+            <input type="file" id="restoreFile" accept="application/json,.json" hidden>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- DRAWER EDITAR MIEMBRO -->
+  <div class="drawer-wrap" id="drawerWrap" hidden>
+    <div class="scrim" data-close></div>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <header class="drawer-head">
+        <h2 id="drawerTitle">Editar integrante</h2>
+        <button class="btn ghost icon" data-close aria-label="Cerrar">✕</button>
+      </header>
+      <div class="drawer-body" id="drawerBody"></div>
+    </aside>
+  </div>
+
+  <!-- CONFIRM -->
+  <div class="modal-wrap" id="modal" hidden>
+    <div class="scrim"></div>
+    <div class="modal">
+      <p id="modalText"></p>
+      <div class="modal-actions">
+        <button class="btn ghost" id="modalNo">Cancelar</button>
+        <button class="btn danger" id="modalYes">Sí, continuar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+  <script src="admin.js"></script>
+</body>
+</html>
