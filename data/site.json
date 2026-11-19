@@ -19,19 +19,19 @@
     {
       "id": "m01",
       "visible": true,
-      "nombre": "Integrante 01",
-      "especialidad": "Ciberseguridad",
-      "email": "integrante01@ejemplo.com",
+      "nombre": "DE. Emmanuel Trujillo Cevallos",
+      "especialidad": "Ingeniería de Software",
+      "email": "emmanuel.trujillo@puruandiro.tecnm.mx",
       "telefono": "000-000-0000",
       "extras": [
         {
-          "etiqueta": "Ubicación",
+          "etiqueta": "Puruándiro, Michoacán",
           "valor": "Ciudad, País"
         }
       ],
       "portafolio": "",
-      "foto": "",
-      "fotoPos": 30
+      "foto": "assets/uploads/integrante-01-mwnzzldi.jpg",
+      "fotoPos": 33
     },
     {
       "id": "m02",
